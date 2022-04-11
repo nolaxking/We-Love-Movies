@@ -8,6 +8,7 @@ function isShowing(is_showing) {
   return knex("movies as m ")
     .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")
     .select("m.*", "mt.is_showing")
+    .distinct("m.*")
     
     .where({ is_showing: is_showing });
 }
